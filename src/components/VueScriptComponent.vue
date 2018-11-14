@@ -20,16 +20,18 @@ export default {
     var vm = this
     ready(function () {
       let addEl = new Promise((resolve, reject) => {
-          postscribe(
-            `#${vm.compId}`,
-            `${vm.script}`,
-            {
-              done: function(x) {}
-            }
-          );
+          let wait = setTimeout(() => {
+              postscribe(
+                  `#${vm.compId}`,
+                  `${vm.script}`,
+                  {
+                      done: function(x) {}
+                  }
+              );
 
-        resolve()
-      });      
+              resolve()
+          }, 2000)
+      });
       addEl.then(function(result) {
           //do nothing
       })
